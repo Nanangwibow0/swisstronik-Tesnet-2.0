@@ -1,5 +1,3 @@
-# SWISSTRONIK-TESNET-2.0
-
 ### TASK 1 Deploy
 
 ### Install : 
