@@ -1,6 +1,6 @@
 # TASK 1
 
-### DEPLOY CONTRACK
+### DEPLOY CONTRACT
 
 ### Install : 
 
