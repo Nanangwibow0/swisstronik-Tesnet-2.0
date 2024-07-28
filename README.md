@@ -174,3 +174,6 @@ chmod +x swisstronik-deploy.sh
 ```
 
 Tunggu Sampai Selesai "SIMPAN CONTRACK DAN HAS nya"
+
+### Buat Repositori di github dan Upload semua File 
+#DONE
