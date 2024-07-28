@@ -114,9 +114,7 @@ Deploy contract
 ```
 npx hardhat run scripts/deploy.js --network swisstronik
 ```
-----------------------------
-
-buat File "setMessage.js"
+Simpan Contract dan TxHas lalu buat File "setMessage.js"
 
 Paste : 
 ```
@@ -151,11 +149,17 @@ main().catch((error) => {
   process.exitCode = 1;
 });
 
+jalankan
+
+```
 npx hardhat run scripts/setMessage.js --network swisstronik
 ```
------------------------------------
-
-buat Folder "getMessage.js"
+Apa Bila Eror Maka
+```
+npm insatall @swisstrinik/utils
+npx hardhat run scripts/setMessage.js --network swisstronik
+```
+buat File "getMessage.js"
 
 Paste : 
 ```
@@ -187,6 +191,10 @@ main().catch((error) => {
   process.exitCode = 1;
 });
 ```
+Jalankan
 ```
 npx hardhat run scripts/getMessage.js --network swisstronik
 ```
+### Upload Ke Repository Github
+
+# DONE
