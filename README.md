@@ -2,6 +2,9 @@
 
 gunakan CODESPACE Untuk Menyelesaikan Task : https://github.com/codespaces
 
+# NOTE :
+### HAPUS File .env & .sh sebelum Upload ke Repository Github
+
 ### Eror Saat Push REPOSITORY 
 
 ```
