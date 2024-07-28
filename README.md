@@ -9,6 +9,8 @@ git config --global user.name "username-github"
 git config --global user.email "email-github"
 ```
 
+Buat SSH-KEY
+
 ```
 ssh-keygen -t ed25519 -C "email-gihub"
 
