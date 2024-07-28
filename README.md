@@ -6,7 +6,7 @@ gunakan CODESPACE Untuk Menyelesaikan Task : https://github.com/codespaces
 
 ```
 git config --global user.name "username-github"
-git config --global user.email "email-gihub"
+git config --global user.email "email-github"
 ```
 
 ```
