@@ -1,30 +1,19 @@
 # TASK 1
 
-### Deploy Contrack 
+### DEPLOY CONTRACK
 
-Buat file .sh "swisstronik-deploy.sh" :
-
-```
-nano swisstronik-deploy.sh
+### Install : 
 
 ```
-pastekan scrip berikut :
-
-```
-#!/bin/bash
-
-# Ensure script stops if there is an error
-set -e
-
-# Install dependencies
 npm install --save-dev @nomicfoundation/hardhat-toolbox
-npm install dotenv
-
-# Initialize Hardhat project
+```
+```
 npx hardhat
+```
 
-# Create hardhat.config.js with network settings
-cat <<EOL > hardhat.config.js
+Buka File : hardhat.config.js dan Paste
+
+```
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
@@ -33,67 +22,106 @@ module.exports = {
   networks: {
     swisstronik: {
       url: "https://json-rpc.testnet.swisstronik.com/",
-      accounts: [\`0x\${process.env.PRIVATE_KEY}\`],
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
     },
   },
 };
-EOL
+```
+```
+npm install dotenv
+```
+Buat File .env
+```
+PRIVATE_KEY=Private-key-kamu dan Save
+```
 
-# Create .env file
-cat <<EOL > .env
-PRIVATE_KEY=your-private-key-here
-EOL
+Edit File pada folder Contact Jadi "Hello_swtr.sol"
 
-# Create Hello_swtr.sol contract
-mkdir -p contracts
-cat <<EOL > contracts/Hello_swtr.sol
+Paste : 
+```
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
+
+//This contract is only intended for testing purposes
 
 contract Swisstronik {
     string private message;
 
-    constructor(string memory _message) payable {
+    /**
+     * @dev Constructor is used to set the initial message for the contract
+     * @param _message the message to associate with the message variable.
+     */
+    constructor(string memory _message) payable{
         message = _message;
     }
 
+    /**
+     * @dev setMessage() updates the stored message in the contract
+     * @param _message the new message to replace the existing one
+     */
     function setMessage(string memory _message) public {
         message = _message;
     }
 
-    function getMessage() public view returns (string memory) {
+    /**
+     * @dev getMessage() retrieves the currently stored message in the contract
+     * @return The message associated with the contract
+     */
+    function getMessage() public view returns(string memory){
         return message;
     }
 }
-EOL
+```
 
-# Compile the contract
+Compile Contract : 
+
+```
 npx hardhat compile
+```
+Buat Folder "script" jika Gak ada
+di Dalam Folder script buat 3 File
 
-# Create deployment script
-mkdir -p scripts
-cat <<EOL > scripts/deploy.js
+Buat File "deploy.js"
+
+paste : 
+
+```
 const hre = require("hardhat");
 
 async function main() {
+  /**
+   * @dev make sure the first argument has the same name as your contract in the Hello_swtr.sol file
+   * @dev the second argument must be the message we want to set in the contract during the deployment process
+   */
   const contract = await hre.ethers.deployContract("Swisstronik", ["Hello Swisstronik!!"]);
+
   await contract.waitForDeployment();
-  console.log(\`Swisstronik contract deployed to \${contract.target}\`);
+
+  console.log(`Swisstronik contract deployed to ${contract.target}`);
 }
 
+//DEFAULT BY HARDHAT:
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-EOL
+```
 
-# Deploy the contract
+Deploy contract
+
+```
 npx hardhat run scripts/deploy.js --network swisstronik
+```
+----------------------------
 
-# Create setMessage script
-cat <<EOL > scripts/setMessage.js
+buat File "setMessage.js"
+
+Paste : 
+```
 const hre = require("hardhat");
-const { encryptDataField } = require("@swisstronik/utils");
+const { encryptDataField, decryptNodeResponse } = require("@swisstronik/utils");
 
 const sendShieldedTransaction = async (signer, destination, data, value) => {
   const rpclink = hre.network.config.url;
@@ -122,10 +150,15 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-EOL
 
-# Create getMessage script
-cat <<EOL > scripts/getMessage.js
+npx hardhat run scripts/setMessage.js --network swisstronik
+```
+-----------------------------------
+
+buat Folder "getMessage.js"
+
+Paste : 
+```
 const hre = require("hardhat");
 const { encryptDataField, decryptNodeResponse } = require("@swisstronik/utils");
 
@@ -153,31 +186,7 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-EOL
-
-# Run setMessage script
-npx hardhat run scripts/setMessage.js --network swisstronik
-
-# Run getMessage script
+```
+```
 npx hardhat run scripts/getMessage.js --network swisstronik
-
-echo "All steps completed successfully."
-
 ```
-
-simpan dan lanjut CTRL-X lalu Y Kemudian ENTER
-
-```
-chmod +x swisstronik-deploy.sh
-
-```
-
-```
-./swisstronik-deploy.sh
-
-```
-
-Tunggu Sampai Selesai "SIMPAN CONTRACK DAN HAS nya"
-
-### Buat Repositori di github dan Upload semua File 
-### DONE
