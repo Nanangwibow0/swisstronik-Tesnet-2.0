@@ -3,10 +3,13 @@
 ### Mint PERC-20
 
 Buat File .sh "PERC20.sh"
-
+```
 nano PERC20.sh
+```
 
 Pastekan scrip Berikut :
+
+```
 #!/bin/sh
 
 # Function to handle errors
@@ -360,3 +363,77 @@ npx hardhat run scripts/transfer.ts --network swisstronik
 echo "Tokens transferred."
 
 echo "All operations completed successfully."
+```
+simpan CTRL+X+Y ENTER
+
+### Jalankan
+
+```
+chmod +x PERC20,sh
+```
+
+```
+./PERC20.sh
+```
+Jika Eror / invalid saat transaksi Cari file "transfer.ts" di folder scrip ganti dengan scrip berikut "
+
+```
+import { ethers, network } from 'hardhat';
+import { encryptDataField } from '@swisstronik/utils';
+import { HttpNetworkConfig } from 'hardhat/types';
+import deployedAddress from '../utils/deployed-address';
+import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
+
+const sendShieldedTransaction = async (
+  signer: HardhatEthersSigner,
+  destination: string,
+  data: string,
+  value: number
+) => {
+  const rpclink = (network.config as HttpNetworkConfig).url;
+
+  const [encryptedData] = await encryptDataField(rpclink, data);
+
+  return await signer.sendTransaction({
+    from: signer.address,
+    to: destination,
+    data: encryptedData,
+    value,
+  });
+};
+
+async function main() {
+  const contractAddress = deployedAddress;
+  const [signer] = await ethers.getSigners();
+
+  const contractFactory = await ethers.getContractFactory('PERC20Sample');
+  const contract = contractFactory.attach(contractAddress);
+
+  const functionName = 'transfer';
+  const recipientAddress = '0x16af037878a6cAce2Ea29d39A3757aC2F6F7aac1'; // Replace with a valid recipient address
+  const amount = ethers.parseUnits('10', 18);
+  const setMessageTx = await sendShieldedTransaction(
+    signer,
+    contractAddress,
+    contract.interface.encodeFunctionData(functionName, [recipientAddress, amount]),
+    0
+  );
+  await setMessageTx.wait();
+
+  console.log('Transaction Receipt: ', setMessageTx);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+```
+Lalu Jalankan
+```
+npx hardhat run scripts/transfer.ts --network swisstronik
+
+```
+
+Simpan Contrack dan Hasnya lalu Upload semua File
+
+# DONE
