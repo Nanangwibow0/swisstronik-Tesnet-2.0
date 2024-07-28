@@ -2,7 +2,13 @@
 
 ### INSTALL : 
 
-Buat file .sh "swisstronik-deploy.sh" dan pastekan scrip berikut :
+Buat file .sh "swisstronik-deploy.sh" :
+
+```
+nano swisstronik-deploy.sh
+
+```
+pastekan scrip berikut :
 
 ```
 #!/bin/bash
@@ -159,7 +165,7 @@ echo "All steps completed successfully."
 
 ```
 
-simpan dan lanjut
+simpan dan lanjut CTRL-X lalu Y Kemudian ENTER
 
 ```
 chmod +x swisstronik-deploy.sh
