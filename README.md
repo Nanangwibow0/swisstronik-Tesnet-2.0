@@ -6,7 +6,12 @@ gunakan CODESPACE Untuk Menyelesaikan Task : https://github.com/codespaces
 
 ### HAPUS File .env & .sh sebelum Upload ke Repository Github
 
-### [TASK-1](https://github.com/Nanangwibow0/Tutor-swisstronik/blob/main/DEPLOY.md)
+# GASKEN
+
+### [TASK 1](https://github.com/Nanangwibow0/Tutor-swisstronik/blob/main/DEPLOY.md)
+### [TASK 2](https://github.com/Nanangwibow0/Tutor-swisstronik/blob/main/MINT-100-ERC-20.md)
+### [TASK 3](https://github.com/Nanangwibow0/Tutor-swisstronik/blob/main/MintERC721.md)
+### [TASK 4](https://github.com/Nanangwibow0/Tutor-swisstronik/blob/main/PERC-20.md)
 
 ### Eror Saat Push REPOSITORY 
 
