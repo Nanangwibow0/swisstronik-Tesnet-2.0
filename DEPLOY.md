@@ -1,6 +1,6 @@
 ### TASK 1 Deploy
 
-### Install : 
+### INSTALL : 
 
 Buat file .sh "swisstronik-deploy.sh" dan pastekan scrip berikut :
 
