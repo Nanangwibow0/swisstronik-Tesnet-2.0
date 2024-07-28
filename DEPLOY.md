@@ -1,6 +1,6 @@
-### TASK 1 Deploy
+#TASK 1
 
-### INSTALL : 
+### Deploy Contrack 
 
 Buat file .sh "swisstronik-deploy.sh" :
 
