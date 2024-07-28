@@ -1,5 +1,11 @@
-sudo chmod +x setup.sh
-sudo ./setup.sh
+# TASK 3
+### Mint ERC-721
+
+Buat file .sh "ERC721.sh"
+
+
+chmod +x ERC721.sh
+./ERC721.sh
 
 #!/bin/sh
 
