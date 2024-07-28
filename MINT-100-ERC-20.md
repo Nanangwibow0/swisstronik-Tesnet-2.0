@@ -1,5 +1,6 @@
-### Tak 2
-## Swisstronik Mint 100 ERC-20 tokens
+# TASK 2
+
+### Mint 100 ERC-20 tokens
 
 Buat file .sh "mint100.sh" pastekan scrip berikut :
 
