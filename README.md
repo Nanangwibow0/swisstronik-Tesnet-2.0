@@ -6,6 +6,7 @@ gunakan CODESPACE Untuk Menyelesaikan Task : https://github.com/codespaces
 
 ### HAPUS File .env & .sh sebelum Upload ke Repository Github
 
+### [[TASK-1][https://github.com/Nanangwibow0/Tutor-swisstronik/blob/main/DEPLOY.md]]
 
 ### Eror Saat Push REPOSITORY 
 
