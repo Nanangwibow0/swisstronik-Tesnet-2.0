@@ -3,10 +3,13 @@
 
 Buat file .sh "ERC721.sh"
 
+```
+nano ERC721.sh
 
-chmod +x ERC721.sh
-./ERC721.sh
+```
+Pastekan scrip berikut :
 
+```
 #!/bin/sh
 
 # Function to handle errors
@@ -237,3 +240,21 @@ npx hardhat run scripts/mint.ts --network swisstronik
 echo "NFT minted."
 
 echo "All operations completed successfully."
+
+```
+Simpan CTRL-X + Y ENTER
+
+### Jalankan
+
+```
+chmod +x ERC721.sh
+
+```
+
+```
+./ERC721.sh
+
+```
+Simpan Contrack dan TxHas nya Lalu Upload Ke repositori Github
+
+### Done
