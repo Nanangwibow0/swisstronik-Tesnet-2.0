@@ -1,4 +1,6 @@
 # SWISSTRONIK-TESNET-2.0
+Web Tesnet : [www.swisstronik.com](https://www.swisstronik.com/testnet2/dashboard)
+Twitter : [X](https://x.com/swisstronik)
 
 gunakan [CODESPACE](https://github.com/codespaces) Untuk Menyelesaikan Task !!
 
