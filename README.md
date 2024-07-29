@@ -5,9 +5,26 @@ Twitter : [X](https://x.com/swisstronik)
 
 ### gunakan [CODESPACE](https://github.com/codespaces) Untuk Menyelesaikan Task !!
 
-# NOTE :
+### Install Node.js
+```
+sudo apt update
+sudo apt upgrade
+```
 
-### HAPUS File .env & .sh sebelum Upload ke Repository Github
+```
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+```
+
+```
+nvm ls-remote
+nvm install node
+nvm install 14
+node -v
+npm -v
+
+```
 
 # GASKEN
 
@@ -16,6 +33,10 @@ Twitter : [X](https://x.com/swisstronik)
 ### [TASK 3](https://github.com/Nanangwibow0/Tutor-swisstronik/blob/main/MintERC721.md)
 ### [TASK 4](https://github.com/Nanangwibow0/Tutor-swisstronik/blob/main/PERC-20.md)
 
+
+# NOTE :
+
+### HAPUS File .env & .sh sebelum Upload ke Repository Github
 
 # Eror Saat Push REPOSITORY 
 
