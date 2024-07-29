@@ -149,6 +149,8 @@ main().catch((error) => {
   process.exitCode = 1;
 });
 
+```
+
 jalankan
 
 ```
@@ -156,14 +158,14 @@ npx hardhat run scripts/setMessage.js --network swisstronik
 
 ```
 
-### Apa Bila Eror Maka
+Apa Bila Terjadi Eror "BUAT KOPI DULU KEMUDIAN INSTALL":
 
 ```
 npm insatall @swisstrinik/utils
 ```
+Jalankan
 ```
 npx hardhat run scripts/setMessage.js --network swisstronik
-
 ```
 buat File "getMessage.js"
 
