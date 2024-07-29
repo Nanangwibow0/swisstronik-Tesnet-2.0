@@ -153,11 +153,17 @@ jalankan
 
 ```
 npx hardhat run scripts/setMessage.js --network swisstronik
+
 ```
-Apa Bila Eror Maka
+
+### Apa Bila Eror Maka
+
 ```
 npm insatall @swisstrinik/utils
+```
+```
 npx hardhat run scripts/setMessage.js --network swisstronik
+
 ```
 buat File "getMessage.js"
 
