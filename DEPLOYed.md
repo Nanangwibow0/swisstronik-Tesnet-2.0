@@ -1,3 +1,4 @@
+```
 #!/bin/sh
 
 # Function to handle errors
@@ -236,3 +237,4 @@ main().catch((error) => {
 EOL
 echo "getMessage.js script created."
 echo "All operations completed successfully."
+```
