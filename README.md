@@ -72,6 +72,9 @@ Jalankan :
 git remote set-url origin git@github.com:<username-github>/<repository-github>
 ```
 ```
+ssh -T git@github.com
+```
+```
 git push -u origin main
 ```
 ### DONE
