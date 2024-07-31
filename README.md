@@ -23,7 +23,7 @@ node -v # should print `v20.16.0`
 # verifies the right npm version is in the environment
 npm -v # should print `10.8.1`
 ```
-### INSTALL GIT
+### Install GIT
 
 ```
 sudo apt-get install git
