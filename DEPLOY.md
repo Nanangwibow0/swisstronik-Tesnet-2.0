@@ -226,7 +226,9 @@ EOL
 echo "getMessage.js script created."
 echo "All operations completed successfully."
 ```
-Jalankan :
+CTRL+X+Y ENTER
+
+### Jalankan :
 
 ```
 chmod +x Deploy.sh
