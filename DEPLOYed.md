@@ -1,3 +1,15 @@
+# TASK 1
+
+### DEPLOY CONTRACT
+
+### Install : 
+```
+nano Deploy.sh
+
+```
+Pate scrip Berikut :
+
+```
 #!/bin/sh
 
 # Function to handle errors
@@ -212,5 +224,14 @@ main().catch((error) => {
 });
 EOL
 echo "getMessage.js script created."
-
 echo "All operations completed successfully."
+```
+Jalankan :
+
+```
+chmod +x Deploy.sh
+./Deploy.sh
+```
+Salin Cobtract Lalu Upload Ke repositori Github
+
+### DONE
