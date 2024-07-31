@@ -6,26 +6,29 @@ Twitter : [X](https://x.com/swisstronik)
 ### gunakan [CODESPACE](https://github.com/codespaces) Untuk Menyelesaikan Task !!
 
 ### Install Node.js
-```
-sudo apt update
-sudo apt upgrade
-```
 
 ```
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# installs fnm (Fast Node Manager)
+curl -fsSL https://fnm.vercel.app/install | bash
+
+# activate fnm
+source ~/.bashrc
+
+# download and install Node.js
+fnm use --install-if-missing 20
+
+# verifies the right Node.js version is in the environment
+node -v # should print `v20.16.0`
+
+# verifies the right npm version is in the environment
+npm -v # should print `10.8.1`
 ```
+### INSTALL GIT
 
 ```
-nvm ls-remote
-nvm install node
-nvm install 14
-node -v
-npm -v
-
+sudo apt-get install git
+git --version
 ```
-
 # GASKEN
 
 ### [TASK 1](https://github.com/Nanangwibow0/swisstronik-Tesnet-2.0/blob/main/DEPLOY.md)
