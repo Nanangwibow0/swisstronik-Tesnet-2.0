@@ -89,17 +89,31 @@ cat <<EOL > contracts/Hello_swtr.sol
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
+//This contract is only intended for testing purposes
+
 contract Swisstronik {
     string private message;
 
+    /**
+     * @dev Constructor is used to set the initial message for the contract
+     * @param _message the message to associate with the message variable.
+     */
     constructor(string memory _message) payable{
         message = _message;
     }
 
+    /**
+     * @dev setMessage() updates the stored message in the contract
+     * @param _message the new message to replace the existing one
+     */
     function setMessage(string memory _message) public {
         message = _message;
     }
 
+    /**
+     * @dev getMessage() retrieves the currently stored message in the contract
+     * @return The message associated with the contract
+     */
     function getMessage() public view returns(string memory){
         return message;
     }
@@ -115,19 +129,23 @@ echo "Contract compiled."
 # Create deploy.js script
 echo "Creating deploy.js script..."
 mkdir -p scripts
-cat <<EOL > scripts/deploy.js
 const hre = require("hardhat");
-const fs = require('fs');
 
 async function main() {
+  /**
+   * @dev make sure the first argument has the same name as your contract in the Hello_swtr.sol file
+   * @dev the second argument must be the message we want to set in the contract during the deployment process
+   */
   const contract = await hre.ethers.deployContract("Swisstronik", ["Hello Swisstronik!!"]);
+
   await contract.waitForDeployment();
 
-  const address = contract.target;
-  fs.writeFileSync('./scripts/deployedAddress.txt', address);
-  console.log(\`Swisstronik contract deployed to \${address}\`);
+  console.log(`Swisstronik contract deployed to ${contract.target}`);
 }
 
+//DEFAULT BY HARDHAT:
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
@@ -144,8 +162,7 @@ echo "Contract deployed."
 echo "Creating setMessage.js script..."
 cat <<EOL > scripts/setMessage.js
 const hre = require("hardhat");
-const { encryptDataField } = require("@swisstronik/utils");
-const fs = require('fs');
+const { encryptDataField, decryptNodeResponse } = require("@swisstronik/utils");
 
 const sendShieldedTransaction = async (signer, destination, data, value) => {
   const rpclink = hre.network.config.url;
@@ -159,22 +176,14 @@ const sendShieldedTransaction = async (signer, destination, data, value) => {
 };
 
 async function main() {
-  const contractAddress = fs.readFileSync('./scripts/deployedAddress.txt', 'utf8');
+  const contractAddress = "0xf84Df872D385997aBc28E3f07A2E3cd707c9698a";
   const [signer] = await hre.ethers.getSigners();
   const contractFactory = await hre.ethers.getContractFactory("Swisstronik");
   const contract = contractFactory.attach(contractAddress);
-
   const functionName = "setMessage";
   const messageToSet = "Hello Swisstronik!!";
-
-  const setMessageTx = await sendShieldedTransaction(
-    signer,
-    contractAddress,
-    contract.interface.encodeFunctionData(functionName, [messageToSet]),
-    0
-  );
+  const setMessageTx = await sendShieldedTransaction(signer, contractAddress, contract.interface.encodeFunctionData(functionName, [messageToSet]), 0);
   await setMessageTx.wait();
-
   console.log("Transaction Receipt: ", setMessageTx);
 }
 
@@ -190,7 +199,6 @@ echo "Creating getMessage.js script..."
 cat <<EOL > scripts/getMessage.js
 const hre = require("hardhat");
 const { encryptDataField, decryptNodeResponse } = require("@swisstronik/utils");
-const fs = require('fs');
 
 const sendShieldedQuery = async (provider, destination, data) => {
   const rpclink = hre.network.config.url;
@@ -203,18 +211,12 @@ const sendShieldedQuery = async (provider, destination, data) => {
 };
 
 async function main() {
-  const contractAddress = fs.readFileSync('./scripts/deployedAddress.txt', 'utf8');
+  const contractAddress = "0xf84Df872D385997aBc28E3f07A2E3cd707c9698a";
   const [signer] = await hre.ethers.getSigners();
   const contractFactory = await hre.ethers.getContractFactory("Swisstronik");
   const contract = contractFactory.attach(contractAddress);
-
   const functionName = "getMessage";
-  const responseMessage = await sendShieldedQuery(
-    signer.provider,
-    contractAddress,
-    contract.interface.encodeFunctionData(functionName)
-  );
-
+  const responseMessage = await sendShieldedQuery(signer.provider, contractAddress, contract.interface.encodeFunctionData(functionName));
   console.log("Decoded response:", contract.interface.decodeFunctionResult(functionName, responseMessage)[0]);
 }
 
