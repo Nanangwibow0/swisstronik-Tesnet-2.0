@@ -76,6 +76,30 @@ export default config;
 EOL
 echo "Hardhat configuration completed."
 
+# Create tsconfig.json file
+echo "Creating tsconfig.json file..."
+cat <<EOL > tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["node_modules/*"]
+    }
+  },
+  "include": ["scripts", "contracts", "test"],
+  "exclude": ["node_modules"]
+}
+EOL
+echo "tsconfig.json file created."
+
 # Collect NFT contract details
 read -p "Enter the NFT name: " NFT_NAME
 read -p "Enter the NFT symbol: " NFT_SYMBOL
@@ -173,7 +197,7 @@ import * as path from 'path';
 import deployedAddress from '../utils/deployed-address';
 
 const sendShieldedTransaction = async (
-  signer: HardhatEethersSigner,
+  signer: HardhatEthersSigner,
   destination: string,
   data: string,
   value: number
