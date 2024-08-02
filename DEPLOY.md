@@ -62,16 +62,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
 module.exports = {
-  solidity: {
-    compilers: [
-      {
-        version: "0.8.19",
-      },
-      {
-        version: "0.8.24",
-      }
-    ]
-  },
+  solidity: "0.8.19",
   networks: {
     swisstronik: {
       url: "https://json-rpc.testnet.swisstronik.com/",
@@ -129,6 +120,7 @@ echo "Contract compiled."
 # Create deploy.js script
 echo "Creating deploy.js script..."
 mkdir -p scripts
+cat <<EOL > scripts/deploy.js
 const hre = require("hardhat");
 
 async function main() {
@@ -140,7 +132,7 @@ async function main() {
 
   await contract.waitForDeployment();
 
-  console.log(`Swisstronik contract deployed to ${contract.target}`);
+  console.log(\`Swisstronik contract deployed to \${contract.target}\`);
 }
 
 //DEFAULT BY HARDHAT:
@@ -226,6 +218,17 @@ main().catch((error) => {
 });
 EOL
 echo "getMessage.js script created."
+
+# Run setMessage.js script
+echo "Running setMessage.js script..."
+npx hardhat run scripts/setMessage.js --network swisstronik
+echo "setMessage.js script completed."
+
+# Run getMessage.js script
+echo "Running getMessage.js script..."
+npx hardhat run scripts/getMessage.js --network swisstronik
+echo "getMessage.js script completed."
+
 echo "All operations completed successfully."
 ```
 CTRL+X+Y ENTER
