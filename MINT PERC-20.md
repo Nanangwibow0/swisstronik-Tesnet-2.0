@@ -364,7 +364,11 @@ echo "Tokens transferred."
 
 echo "All operations completed successfully."
 ```
-
+### Jalankan : 
+```
+chmod +x PERC20.sh
+./PERC20.sh
+```
 Simpan Contrack dan Hasnya lalu Upload semua File
 
 # DONE
