@@ -2,7 +2,14 @@
 
 ### Mint 100 ERC-20 tokens
 
-Buat file .sh "mint100.sh" pastekan scrip berikut :
+### Buat file .sh
+
+```
+nano mint100.sh
+```
+
+### pastekan scrip berikut :
+
 
 ```
 #!/bin/sh
