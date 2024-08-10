@@ -7,7 +7,7 @@
 * Clone Repository
 ```bash
 git clone https://github.com/Nanangwibow0/Deploy-Proxy.git
-cd swisstronik-deploy-proxy
+cd Deploy-Proxy
 ```
 
 * Install Dependency
