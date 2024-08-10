@@ -1,30 +1,26 @@
-# Task 6
+# TASK 6
 
 ### Deploy Proxy
 
-* Clone Repository
+### Instalasi
 
+* Clone Repository
 ```bash
 git clone https://github.com/Nanangwibow0/Deploy-Proxy.git
 cd swisstronik-deploy-proxy
 ```
 
 * Install Dependency
-
 ```bash
 npm install
 ```
 
-* .env File
 
-buat .env
-
+* Tambahkan .env
 ```bash
 touch .env
 ```
-
 Tambahkan Private key
-
 ```bash
 PRIVATE_KEY="your private key"
 ```
@@ -44,3 +40,6 @@ npm run add-issuers
 npm run list-issuers
 npm run upgrade
 ```
+### Upload file Ke Repository Github
+
+# DONE
