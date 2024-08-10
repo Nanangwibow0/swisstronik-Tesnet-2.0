@@ -16,11 +16,11 @@ npm install
 ```
 
 
-* Tambahkan .env
+* Set .env
 ```bash
 touch .env
 ```
-Tambahkan Private key
+Tambahkan Private key pada .env
 ```bash
 PRIVATE_KEY="your private key"
 ```
