@@ -5,7 +5,7 @@
 * Clone Repository
 ```bash
 git clone https://github.com/Nanangwibow0/Deploy-Private-NFT.git
-cd swisstronik-deploy-private-nft
+cd Deploy-Private-NFT
 ```
 * Install Dependency
 
